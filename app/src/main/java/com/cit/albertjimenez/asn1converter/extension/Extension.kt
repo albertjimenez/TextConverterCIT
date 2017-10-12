@@ -9,20 +9,20 @@ package com.cit.albertjimenez.asn1converter.extension
  *
  * @return empty string if there is no result, or the String associated
  */
-private val phoneticList = listOf("alpha", "bravo", "charlie", "delta", "echo", "foxtrot", "golf",
+private val phoneticList by lazyOf(listOf("alpha", "bravo", "charlie", "delta", "echo", "foxtrot", "golf",
         "hotel", "india", "juliet", "kilo", "lima", "mike", "november", "oscar", "papa", "quebec",
-        "romeo", "sierra", "tango", "uniform", "victor", "whiskey", "x-ray", "yankee", "zulu")
-private val dictSMS = mapOf("post script" to "P.S.", "as soon as posible" to "A.S.A.P", "you" to "U",
+        "romeo", "sierra", "tango", "uniform", "victor", "whiskey", "x-ray", "yankee", "zulu") )
+private val dictSMS by lazyOf(mapOf("post script" to "P.S.", "as soon as posible" to "A.S.A.P", "you" to "U",
         "because" to "BC", "see" to "C", "estimated time of arrival" to "E.T.A.", "do it yourself" to "D.I.Y",
-        "to be honest" to "tbh", "thought" to "tho", "road" to "rd", "avenue" to "Ave", "for example" to "e.g.")
+        "to be honest" to "tbh", "thought" to "tho", "road" to "rd", "avenue" to "Ave", "for example" to "e.g."))
 
-private val alphabet = listOf("a", "b", "c", "d", "e", "f", "g", "h", "i",
+private val alphabet by lazyOf(listOf("a", "b", "c", "d", "e", "f", "g", "h", "i",
         "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
-        "v", "w", "x", "y", "z", " ")
+        "v", "w", "x", "y", "z", " "))
 
-private val morse = listOf(".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",
+private val morse by lazyOf(listOf(".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",
         ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-",
-        "...-", ".--", "-..-", "-.--", "--..", "|")
+        "...-", ".--", "-..-", "-.--", "--..", "|"))
 
 fun String.toPhoneticCode(): String {
     var elem = ""
