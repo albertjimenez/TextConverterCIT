@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ASN1 Converter</string>
+    <string name="textFirstActivity">This is a TextView</string>
+    <string name="first_button">First button</string>
+    <string name="second_button">Second button</string>
+    <string name="hint_first_edittext">Type some text</string>
 </resources>
