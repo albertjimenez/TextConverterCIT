@@ -13,7 +13,7 @@ import com.cit.albertjimenez.asn1converter.algorithm.textToMorse
 import com.cit.albertjimenez.asn1converter.algorithm.textToPhonetic
 import com.cit.albertjimenez.asn1converter.algorithm.textToSMS
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.intentFor
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
                 R.layout.support_simple_spinner_dropdown_item, selectionItems)
 
 
-        first_button.setOnClickListener { toast(getString(R.string.action_firs_button)) }
+        first_button.setOnClickListener { startActivity(intentFor<SecondActivity>()) }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
