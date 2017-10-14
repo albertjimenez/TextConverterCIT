@@ -4,14 +4,10 @@ package com.cit.albertjimenez.asn1converter.extension
  * Created by Albert Jiménez on 12/10/17 for Programming Mobile Devices.
  */
 
-/**
- * @param string which we like to know if the initial is on a list
- *
- * @return empty string if there is no result, or the String associated
- */
+
 private val phoneticList by lazyOf(listOf("alpha", "bravo", "charlie", "delta", "echo", "foxtrot", "golf",
         "hotel", "india", "juliet", "kilo", "lima", "mike", "november", "oscar", "papa", "quebec",
-        "romeo", "sierra", "tango", "uniform", "victor", "whiskey", "x-ray", "yankee", "zulu") )
+        "romeo", "sierra", "tango", "uniform", "victor", "whiskey", "x-ray", "yankee", "zulu"))
 private val dictSMS by lazyOf(mapOf("post script" to "P.S.", "as soon as posible" to "A.S.A.P", "you" to "U",
         "because" to "BC", "see" to "C", "estimated time of arrival" to "E.T.A.", "do it yourself" to "D.I.Y",
         "to be honest" to "tbh", "thought" to "tho", "road" to "rd", "avenue" to "Ave", "for example" to "e.g."))
@@ -24,6 +20,10 @@ private val morse by lazyOf(listOf(".-", "-...", "-.-.", "-..", ".", "..-.", "--
         ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-",
         "...-", ".--", "-..-", "-.--", "--..", "|"))
 
+/**
+ * Extension method for converting the String itself to a Phonetic Code
+ * @return a new string with the conversion
+ */
 fun String.toPhoneticCode(): String {
     var elem = ""
     forEach {
@@ -36,6 +36,11 @@ fun String.toPhoneticCode(): String {
     return elem
 }
 
+/**
+ * Extension method for converting the String to a Morse Code
+ *
+ * @return a new string with the conversion
+ */
 fun String.toMorseCode(): String {
     val stb = StringBuilder()
     this.toLowerCase().forEach {
@@ -46,6 +51,11 @@ fun String.toMorseCode(): String {
     return stb.toString()
 }
 
+/**
+ * Extension method for converting the String to a SMS Code
+ *
+ * @return a new string with the conversion
+ */
 fun String.toShorten(): String {
     val splittedArray = this.split(" ")
     val stb = StringBuilder()
@@ -56,6 +66,11 @@ fun String.toShorten(): String {
     return stb.toString()
 }
 
+/**
+ * Extension method for converting the String to an ASCII Code
+ *
+ * @return a new string with the conversion
+ */
 fun String.toASCII(): String {
     val stb = StringBuilder()
     this.toCharArray().forEach {

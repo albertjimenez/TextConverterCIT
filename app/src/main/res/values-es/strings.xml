@@ -5,4 +5,10 @@
     <string name="first_button">Primer botón</string>
     <string name="hint_first_edittext">Introduce algo de texto</string>
     <string name="action_firs_button">No hago nada todavía</string>
+    <string name="my_mobile_phone">"Mi dispositivo es: "</string>
+    <string name="go_back">¡Volver atrás!</string>
+    <string name="ok">Vale</string>
+    <string name="warning">Aviso</string>
+    <string name="information">Información</string>
+    <string name="message_back">"Has ejecutado la tercera actividad en: "</string>
 </resources>
