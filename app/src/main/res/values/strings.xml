@@ -3,4 +3,5 @@
     <string name="textFirstActivity">This is a TextView</string>
     <string name="first_button">First button</string>
     <string name="hint_first_edittext">Type some text</string>
+    <string name="action_firs_button">I\'m not doing anything yet</string>
 </resources>
