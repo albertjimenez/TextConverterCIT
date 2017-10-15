@@ -102,4 +102,5 @@
     <string name="warning">Warning</string>
     <string name="information">Information</string>
     <string name="message_back">You launched the third activity on:</string>
+    <string name="task6">Task 6 Alert</string>
 </resources>

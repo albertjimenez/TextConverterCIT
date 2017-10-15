@@ -11,6 +11,7 @@ class ThirdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
-        goback.setOnClickListener { startActivity(intentFor<MainActivity>("DATE" to GregorianCalendar.getInstance().time.toString())) }
+        goback.setOnClickListener { startActivity(intentFor<MainActivity>("DATE"
+                to GregorianCalendar.getInstance().time.toString())) }
     }
 }
