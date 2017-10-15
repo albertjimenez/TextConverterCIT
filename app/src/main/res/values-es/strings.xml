@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ASN1 Converter</string>
-    <string name="textFirstActivity">Esto es un TextView</string>
+    <string name="textFirstActivity">Conversión en directo</string>
     <string name="first_button">Primer botón</string>
     <string name="hint_first_edittext">Introduce algo de texto</string>
     <string name="action_firs_button">No hago nada todavía</string>
@@ -11,4 +11,7 @@
     <string name="warning">Aviso</string>
     <string name="information">Información</string>
     <string name="message_back">"Has ejecutado la tercera actividad en: "</string>
+    <string name="task6">Alerta tarea 6</string>
+    <string name="text_alert_task6">Esto es una alerta para la tarea 6. Quieres ir hacia la actividad previa?</string>
+    <string name="cancel_msg">Has presionado cancelar</string>
 </resources>

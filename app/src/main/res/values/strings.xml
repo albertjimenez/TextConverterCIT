@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ASN1 Converter</string>
-    <string name="textFirstActivity">This is a TextView</string>
+    <string name="textFirstActivity">Live conversion</string>
     <string name="first_button">First button</string>
     <string name="hint_first_edittext">Type some text</string>
     <string name="action_firs_button">I\'m not doing anything yet</string>
@@ -103,4 +103,7 @@
     <string name="information">Information</string>
     <string name="message_back">You launched the third activity on:</string>
     <string name="task6">Task 6 Alert</string>
+    <string name="text_alert_task6">This is an alert for task 6. Do you want to go back to previous activity?</string>
+    <string name="cancel_msg">You pressed cancel</string>
+    <string name="notification_text">Task 6 Notification</string>
 </resources>

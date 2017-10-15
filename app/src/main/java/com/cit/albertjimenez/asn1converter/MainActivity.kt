@@ -1,6 +1,7 @@
 package com.cit.albertjimenez.asn1converter
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,6 +15,7 @@ import com.cit.albertjimenez.asn1converter.algorithm.textToPhonetic
 import com.cit.albertjimenez.asn1converter.algorithm.textToSMS
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.contentView
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.yesButton
 
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         //Using ANKO of JetBrains, we can have access easily to UI
         first_button.setOnClickListener { startActivity(intentFor<SecondActivity>("INFO" to android.os.Build.MODEL)) }
 
+        Snackbar.make(contentView!!, "Long tap on the button for third activity", Snackbar.LENGTH_LONG).show()
         first_button.setOnLongClickListener {
             startActivity(intentFor<ThirdActivity>())
             true
