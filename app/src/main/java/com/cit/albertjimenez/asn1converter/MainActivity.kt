@@ -1,5 +1,7 @@
 package com.cit.albertjimenez.asn1converter
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.cit.albertjimenez.asn1converter.algorithm.textToASCII
 import com.cit.albertjimenez.asn1converter.algorithm.textToMorse
 import com.cit.albertjimenez.asn1converter.algorithm.textToPhonetic
@@ -22,7 +25,10 @@ import org.jetbrains.anko.yesButton
 class MainActivity : AppCompatActivity() {
 
     private val selectionItems = listOf("Morse", "SMS", "ASCII", "Phonetic")
-    var selection = selectionItems[0]
+    private val SHARED_PRF_CONST = listOf("CONVERTED", "INPUTTEXT", "SELECTION")
+    private var selection = selectionItems[0]
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         first_button.setOnLongClickListener {
             startActivity(intentFor<ThirdActivity>())
             true
+        }
+
+        //Checking bundle
+        if (savedInstanceState!=null){
+            val sharedPrf = mySharedPrf(this)
+            textView.text = sharedPrf.getString(SHARED_PRF_CONST[0],null)
+            first_edittext.setText(sharedPrf.getString(SHARED_PRF_CONST[1],null), TextView.BufferType.EDITABLE)
+            selection = sharedPrf.getString(SHARED_PRF_CONST[2],null)
         }
 
         //Checking third activity launch
@@ -82,6 +96,18 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        val convertedText = textView.text.toString()
+        val inputText = first_edittext.text.toString()
+        val option = selection
+        val editor = mySharedPrf(this).edit()
+        editor.putString(SHARED_PRF_CONST[0], convertedText)
+        editor.putString(SHARED_PRF_CONST[1], inputText)
+        editor.putString(SHARED_PRF_CONST[2], option)
+        editor.apply()
+        super.onSaveInstanceState(outState)
+    }
+
     /**
      * @param selection Represents which conversion you may apply
      *
@@ -96,6 +122,31 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+//
+//    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+//        val convertedText = textView.text.toString()
+//        val inputText = first_edittext.text.toString()
+//        val option = selection
+//        val editor = mySharedPrf(this).edit()
+//        editor.putString(SHARED_PRF_CONST[0], convertedText)
+//        editor.putString(SHARED_PRF_CONST[1], inputText)
+//        editor.putString(SHARED_PRF_CONST[2], option)
+//        editor.apply()
+//    }
+
+}
+
+/**
+ * private method for storing the main view data
+ *
+ * @param The context of the current activity
+ *
+ * @return an instance of SharedPreferences
+ */
+private fun mySharedPrf(context: Context): SharedPreferences {
+    val sharedPrf = context.getSharedPreferences(
+            context.getString(R.string.preference_file_key),Context.MODE_PRIVATE)
+    return sharedPrf
 }
 
 
