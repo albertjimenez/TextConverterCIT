@@ -34,7 +34,7 @@ class SecondActivity : AppCompatActivity() {
                 message = getString(R.string.text_alert_task6)
 
                 customView {
-                    button("My Github"){
+                    button(getString(R.string.github_link)){
                         onClick { browse("https://github.com/albertjimenez") }
                     }
                     yesButton { startActivity(intentFor<MainActivity>()) }
