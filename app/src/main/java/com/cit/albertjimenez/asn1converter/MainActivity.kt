@@ -1,7 +1,5 @@
 package com.cit.albertjimenez.asn1converter
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -45,14 +43,6 @@ class MainActivity : AppCompatActivity() {
         first_button.setOnLongClickListener {
             startActivity(intentFor<ThirdActivity>())
             true
-        }
-
-        //Checking bundle
-        if (savedInstanceState!=null){
-            val sharedPrf = mySharedPrf(this)
-            textView.text = sharedPrf.getString(SHARED_PRF_CONST[0],null)
-            first_edittext.setText(sharedPrf.getString(SHARED_PRF_CONST[1],null), TextView.BufferType.EDITABLE)
-            selection = sharedPrf.getString(SHARED_PRF_CONST[2],null)
         }
 
         //Checking third activity launch
@@ -100,12 +90,22 @@ class MainActivity : AppCompatActivity() {
         val convertedText = textView.text.toString()
         val inputText = first_edittext.text.toString()
         val option = selection
-        val editor = mySharedPrf(this).edit()
-        editor.putString(SHARED_PRF_CONST[0], convertedText)
-        editor.putString(SHARED_PRF_CONST[1], inputText)
-        editor.putString(SHARED_PRF_CONST[2], option)
-        editor.apply()
+        with(outState!!) {
+            putString(SHARED_PRF_CONST[0], convertedText)
+            putString(SHARED_PRF_CONST[1], inputText)
+            putString(SHARED_PRF_CONST[2], option)
+        }
         super.onSaveInstanceState(outState)
+    }
+
+    //Not necessary to check onCreate if the bundle is null, dedicated method better
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        savedInstanceState!!.apply {
+            textView.text = getString(SHARED_PRF_CONST[0])
+            first_edittext.setText(getString(SHARED_PRF_CONST[1]), TextView.BufferType.EDITABLE)
+            selection = getString(SHARED_PRF_CONST[2])
+        }
     }
 
     /**
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
      *
      * @param data The data will be overwritten with the result
      */
-    private fun convert(selection: String, data : String){
+    private fun convert(selection: String, data: String) {
         when (selection) {
             "Morse" -> textView.text = textToMorse(data)
             "SMS" -> textView.text = textToSMS(data)
@@ -122,31 +122,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-//
-//    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
-//        val convertedText = textView.text.toString()
-//        val inputText = first_edittext.text.toString()
-//        val option = selection
-//        val editor = mySharedPrf(this).edit()
-//        editor.putString(SHARED_PRF_CONST[0], convertedText)
-//        editor.putString(SHARED_PRF_CONST[1], inputText)
-//        editor.putString(SHARED_PRF_CONST[2], option)
-//        editor.apply()
-//    }
-
 }
 
-/**
- * private method for storing the main view data
- *
- * @param The context of the current activity
- *
- * @return an instance of SharedPreferences
- */
-private fun mySharedPrf(context: Context): SharedPreferences {
-    val sharedPrf = context.getSharedPreferences(
-            context.getString(R.string.preference_file_key),Context.MODE_PRIVATE)
-    return sharedPrf
-}
 
 
