@@ -18,6 +18,7 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = getString(R.string.information)
 
         fab.setOnClickListener {
             val myNotifier = Notifications(context = applicationContext, channelID = channelID, activity = this )
