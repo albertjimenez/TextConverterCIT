@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         spinner.adapter = ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, selectionItems)
 
+        first_button.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
+        first_edittext.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_down))
         //Lambda for setting the click action
         //Using ANKO of JetBrains, we can have access easily to UI
         first_button.setOnClickListener { startActivity(intentFor<SecondActivity>("INFO" to android.os.Build.MODEL)) }
