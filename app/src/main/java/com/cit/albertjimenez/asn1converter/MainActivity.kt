@@ -1,5 +1,7 @@
 package com.cit.albertjimenez.asn1converter
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +17,7 @@ import com.cit.albertjimenez.asn1converter.algorithm.textToASCII
 import com.cit.albertjimenez.asn1converter.algorithm.textToMorse
 import com.cit.albertjimenez.asn1converter.algorithm.textToPhonetic
 import com.cit.albertjimenez.asn1converter.algorithm.textToSMS
+import com.cit.albertjimenez.asn1converter.statistic.StatisticalManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.contentView
@@ -23,26 +26,33 @@ import org.jetbrains.anko.yesButton
 
 class MainActivity : AppCompatActivity() {
 
-    private val selectionItems = listOf("Morse", "SMS", "ASCII", "Phonetic")
+    companion object {
+        val selectionItems = listOf("Morse", "SMS", "ASCII", "Phonetic")
+    }
+
     private val SHARED_PRF_CONST = listOf("CONVERTED", "INPUTTEXT", "SELECTION")
     private var selection = selectionItems[0]
-
+    private val statsManager = StatisticalManager.instance
+    private var sharedPrf :SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         //Set the Adapter for modify how is it going to be showed to user
         spinner.adapter = ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, selectionItems)
-
+        sharedPrf = applicationContext.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         first_button.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
         first_edittext.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_down))
         //Lambda for setting the click action
         //Using ANKO of JetBrains, we can have access easily to UI
         first_button.setOnClickListener { startActivity(intentFor<SecondActivity>("INFO" to android.os.Build.MODEL)) }
 
-        Snackbar.make(contentView!!, "Long tap on the button for third activity", Snackbar.LENGTH_LONG).show()
+        //Loading statistical data from SharedPreferences
+        loadStats()
+
+        Snackbar.make(contentView!!, getString(R.string.snack_third_activity), Snackbar.LENGTH_LONG).show()
         first_button.setOnLongClickListener {
             startActivity(intentFor<ThirdActivity>())
             true
@@ -79,6 +89,8 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
                 val myText = p0!!.toString()
                 convert(selection, myText)
+                statsManager.addStats(selection)
+                saveStatsSharedPrf()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -123,6 +135,18 @@ class MainActivity : AppCompatActivity() {
             "ASCII" -> textView.text = textToASCII(data)
             else -> textView.text = textToPhonetic(data)
 
+        }
+    }
+
+    private fun saveStatsSharedPrf() {
+        val editor = sharedPrf!!.edit()
+        editor.putInt(selection, statsManager.getStats(selection))
+        editor.apply()
+    }
+
+    private fun loadStats() {
+        selectionItems.forEach {
+            statsManager.loadStats(it, sharedPrf!!.getInt(it, 0))
         }
     }
 }

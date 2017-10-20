@@ -9,8 +9,9 @@ import kotlinx.android.synthetic.main.content_second.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
-val channelID = "com.cit.albertjimenez.as1converter.ANDROID"
-val requestPermission = 100
+private val channelID = "com.cit.albertjimenez.as1converter.ANDROID"
+private val requestPermission = 100
+
 class SecondActivity : AppCompatActivity() {
 
 
@@ -21,13 +22,13 @@ class SecondActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.information)
 
         fab.setOnClickListener {
-            val myNotifier = Notifications(context = applicationContext, channelID = channelID, activity = this )
+            val myNotifier = Notifications(context = applicationContext, channelID = channelID, activity = this)
             myNotifier.callNotification()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         if (intent.extras.containsKey("INFO"))
-            deviceTextView.text= deviceTextView.text.toString().plus(intent.extras.getString("INFO"))
+            deviceTextView.text = deviceTextView.text.toString().plus(intent.extras.getString("INFO"))
 
         task6Button.setOnClickListener {
             alert {
@@ -35,7 +36,7 @@ class SecondActivity : AppCompatActivity() {
                 message = getString(R.string.text_alert_task6)
 
                 customView {
-                    button(getString(R.string.github_link)){
+                    button(getString(R.string.github_link)) {
                         onClick { browse("https://github.com/albertjimenez") }
                     }
                     yesButton { startActivity(intentFor<MainActivity>()) }
@@ -46,12 +47,12 @@ class SecondActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when(requestCode){
-            requestPermission-> {
-             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                 val myNotifier = Notifications(context = this, channelID = channelID, activity = this )
-                 myNotifier.callNotification()
-             }
+        when (requestCode) {
+            requestPermission -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    val myNotifier = Notifications(context = this, channelID = channelID, activity = this)
+                    myNotifier.callNotification()
+                }
             }
         }
     }

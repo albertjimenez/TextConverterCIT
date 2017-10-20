@@ -14,4 +14,8 @@
     <string name="task6">Alerta tarea 6</string>
     <string name="text_alert_task6">Esto es una alerta para la tarea 6. Quieres ir hacia la actividad previa?</string>
     <string name="cancel_msg">Has presionado cancelar</string>
+    <string name="github_link">Mi Github</string>
+    <string name="title_activity_second">Segunda actividad</string>
+    <string name="notification_text">Notificación Tarea 6</string>
+    <string name="snack_third_activity">Mantén pulsado para mostrar otra actividad</string>
 </resources>
