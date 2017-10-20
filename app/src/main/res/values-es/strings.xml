@@ -18,4 +18,5 @@
     <string name="title_activity_second">Segunda actividad</string>
     <string name="notification_text">Notificación Tarea 6</string>
     <string name="snack_third_activity">Mantén pulsado para mostrar otra actividad</string>
+    <string name="phonetic">FONÉTICO</string>
 </resources>

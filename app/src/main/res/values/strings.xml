@@ -108,4 +108,5 @@
     <string name="preference_file_key" translatable="false">com.cit.albertjimenez.asn1converter.SHARED_PREFERENCES</string>
     <string name="github_link">My Github</string>
     <string name="snack_third_activity">Long tap on the button for third activity</string>
+    <string name="phonetic">PHONETIC</string>
 </resources>

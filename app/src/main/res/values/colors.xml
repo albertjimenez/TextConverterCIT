@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="backgroundAssignment">#9fd6fb</color>
+    <color name="colorASCII">#56B7F1</color>
+    <color name="colorMorse">#fe6da8</color>
+    <color name="colorSMS">#cda67f</color>
+    <color name="colorPhonetic">#fed70e</color>
 </resources>
