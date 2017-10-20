@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">ASN1 Converter</string>
     <string name="textFirstActivity">Conversión en directo</string>
-    <string name="first_button">Primer botón</string>
+    <string name="first_button">Info Dispositivo</string>
     <string name="hint_first_edittext">Introduce algo de texto</string>
     <string name="action_firs_button">No hago nada todavía</string>
     <string name="my_mobile_phone">"Mi dispositivo es: "</string>
@@ -19,4 +19,5 @@
     <string name="notification_text">Notificación Tarea 6</string>
     <string name="snack_third_activity">Mantén pulsado para mostrar otra actividad</string>
     <string name="phonetic">FONÉTICO</string>
+    <string name="statistics">Estadísticas</string>
 </resources>

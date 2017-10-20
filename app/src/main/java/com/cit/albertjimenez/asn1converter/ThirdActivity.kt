@@ -3,6 +3,7 @@ package com.cit.albertjimenez.asn1converter
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.animation.AnimationUtils
 import com.cit.albertjimenez.asn1converter.statistic.StatisticalManager
 import kotlinx.android.synthetic.main.activity_third.*
 import org.eazegraph.lib.charts.PieChart
@@ -28,6 +29,10 @@ class ThirdActivity : AppCompatActivity() {
             startActivity(intentFor<MainActivity>("DATE"
                     to openingTime))
         }
+        text_ascii.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate))
+        text_morse.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate))
+        text_sms.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate))
+        text_phonetic.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate))
         loadPieChart(piechart)
         piechart.innerValueColor = Color.parseColor("#000000")
         piechart.startAnimation()

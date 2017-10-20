@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ASN1 Converter</string>
     <string name="textFirstActivity">Live conversion</string>
-    <string name="first_button">First button</string>
+    <string name="first_button">Device info</string>
     <string name="hint_first_edittext">Type some text</string>
     <string name="action_firs_button">I\'m not doing anything yet</string>
     <string name="title_activity_secondactivity">secondactivity</string>
@@ -109,4 +109,5 @@
     <string name="github_link">My Github</string>
     <string name="snack_third_activity">Long tap on the button for third activity</string>
     <string name="phonetic">PHONETIC</string>
+    <string name="statistics">Statistics</string>
 </resources>

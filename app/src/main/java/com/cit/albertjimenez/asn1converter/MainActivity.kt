@@ -53,10 +53,8 @@ class MainActivity : AppCompatActivity() {
         loadStats()
 
         Snackbar.make(contentView!!, getString(R.string.snack_third_activity), Snackbar.LENGTH_LONG).show()
-        first_button.setOnLongClickListener {
-            startActivity(intentFor<ThirdActivity>())
-            true
-        }
+        statisticButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
+        statisticButton.setOnClickListener{ startActivity(intentFor<ThirdActivity>()) }
 
         //Checking third activity launch
         if (intent.hasExtra("DATE")) {
