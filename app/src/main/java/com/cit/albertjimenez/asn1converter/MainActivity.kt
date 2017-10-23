@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                 message = getString(R.string.message_back) + "\n" + intent.extras.getString("DATE")
                 yesButton { }
             }.show()
+            intent.removeExtra("DATE")
         }
 
         //Object is for singleton access, but in this case, can be used for Anonymous classes
