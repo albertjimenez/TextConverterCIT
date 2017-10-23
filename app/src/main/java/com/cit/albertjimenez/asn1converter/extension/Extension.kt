@@ -81,7 +81,7 @@ fun String.toShorten(): String {
 fun String.toASCII(): String {
     val stb = StringBuilder()
     this.toCharArray().forEach {
-        stb.append(Integer.toHexString(it.toInt()) + " ")
+        stb.append("$" +Integer.toHexString(it.toInt()) + " ")
     }
     return stb.toString()
 }

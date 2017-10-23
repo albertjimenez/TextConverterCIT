@@ -3,7 +3,6 @@ package com.cit.albertjimenez.asn1converter
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -20,12 +19,12 @@ import com.cit.albertjimenez.asn1converter.algorithm.textToSMS
 import com.cit.albertjimenez.asn1converter.statistic.StatisticalManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
-import org.jetbrains.anko.contentView
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.yesButton
 
 class MainActivity : AppCompatActivity() {
 
+    //Singleton for be used on ThirdActvity, for statistical purposes
     companion object {
         val selectionItems = listOf("Morse", "SMS", "ASCII", "Phonetic")
     }
@@ -45,14 +44,15 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         first_button.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
         first_edittext.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_down))
+
         //Lambda for setting the click action
         //Using ANKO of JetBrains, we can have access easily to UI
-        first_button.setOnClickListener { startActivity(intentFor<SecondActivity>("INFO" to android.os.Build.MODEL)) }
+        first_button.setOnClickListener { startActivity(intentFor<SecondActivity>("INFO" to
+                android.os.Build.MODEL)) }
 
         //Loading statistical data from SharedPreferences
         loadStats()
 
-        Snackbar.make(contentView!!, getString(R.string.snack_third_activity), Snackbar.LENGTH_LONG).show()
         statisticButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
         statisticButton.setOnClickListener{ startActivity(intentFor<ThirdActivity>()) }
 

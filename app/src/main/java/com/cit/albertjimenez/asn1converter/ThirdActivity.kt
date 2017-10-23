@@ -14,7 +14,6 @@ import java.util.*
 
 class ThirdActivity : AppCompatActivity() {
 
-    private val imageURL = "https://source.unsplash.com/random/400x400"
     private val selectionItems = MainActivity.selectionItems
     private val statsManager = StatisticalManager.instance
     private val colorList = listOf(Color.parseColor("#FE6DA8"),
@@ -34,7 +33,6 @@ class ThirdActivity : AppCompatActivity() {
         text_sms.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate))
         text_phonetic.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate))
         loadPieChart(piechart)
-        piechart.innerValueColor = Color.parseColor("#000000")
         piechart.startAnimation()
 
     }

@@ -20,7 +20,7 @@ import com.cit.albertjimenez.asn1converter.SecondActivity
 class Notifications(private val context: Context,
                     private val channelID: String, private val activity: SecondActivity) {
 
-    var resultPermission = 100
+    private var resultPermission = 100
 
     fun callNotification() {
         val callIntent = Intent(Intent.ACTION_CALL)

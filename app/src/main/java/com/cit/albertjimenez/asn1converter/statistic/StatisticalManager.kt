@@ -20,9 +20,6 @@ class StatisticalManager private constructor() {
             statsMap[selection] = statsMap[selection]!!.inc()
         else
             statsMap[selection] = 1
-
-//        if (statsMap.getOrPut(selection, defaultValue = { 1 }) > 1)
-//            statsMap[selection] = statsMap[selection]!!.inc()
     }
 
     fun getStats(selection: String): Int {
