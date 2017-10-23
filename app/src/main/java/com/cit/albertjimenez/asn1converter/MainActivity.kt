@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         //Loading statistical data from SharedPreferences
         loadStats()
 
-        statisticButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.move))
+        statisticButton.startAnimation(AnimationUtils.loadAnimation(applicationContext, R.anim.move))
         statisticButton.setOnClickListener{ startActivity(intentFor<ThirdActivity>()) }
 
         //Checking third activity launch
@@ -120,6 +120,7 @@ class MainActivity : AppCompatActivity() {
             selection = getString(SHARED_PRF_CONST[2])
         }
     }
+
 
     /**
      * @param selection Represents which conversion you may apply
